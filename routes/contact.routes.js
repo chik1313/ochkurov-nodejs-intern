@@ -6,6 +6,4 @@ router.post('/contact', contactController.createContactinfo)
 router.get('/contact', contactController.getContactInfoByUser)
 
 
-
-
 module.exports = router
