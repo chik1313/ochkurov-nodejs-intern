@@ -3,9 +3,9 @@ const router = new Router()
 const contactController = require('../controllers/contact.controller')
 const {body} = require("express-validator");
 
-const emailValidation = body('email').isEmail()
-const phoneValidatin = body('phone').isString().custom((value) => {
-    if(value.includes('+375')) {
+const emailValidation = body('email').trim().isEmail().isLength({min: 1, max: 100})
+const phoneValidatin = body('phone').isString().custom(async (value) => {
+    if(value.includes('+380')) {
         return true
     }
     throw new Error('incorrect number')
