@@ -1,8 +1,9 @@
-const db = require('../db')
+import db from '../db'
+import {Request, Response} from "express";
 
 
-class ContactController {
-    async createContactinfo(req, res) {
+class ContactController  {
+    async createContactinfo(req:Request, res:Response) {
         try {
             const {email, phone, userId} = req.body
             if(!userId) {
@@ -15,7 +16,7 @@ class ContactController {
         }
     }
 
-    async getContactInfoByUser(req, res) {
+    async getContactInfoByUser(req:Request, res:Response) {
         try {
             const id = req.query.id
             if (!id) {
@@ -29,4 +30,4 @@ class ContactController {
     }
 }
 
-module.exports = new ContactController()
+export default new ContactController()

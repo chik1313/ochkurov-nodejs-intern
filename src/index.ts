@@ -1,6 +1,6 @@
-const express = require('express')
-const userRouter = require('./routes/user.routes')
-const contactRouter = require('./routes/contact.routes')
+import express from 'express'
+import {contactRouter} from './routes/contact.routes'
+import {userRouter} from "./routes/user.routes";
 
 
 const PORT = process.env.PORT || 5000

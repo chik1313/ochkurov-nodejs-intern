@@ -8,7 +8,7 @@ create TABLE person(
 create TABLE contact(
          id SERIAL PRIMARY KEY,
          email VARCHAR(255),
-         phone INTEGER,
+         phone VARCHAR(255),
          user_id INTEGER,
          FOREIGN KEY (user_id) REFERENCES person (id)
 );

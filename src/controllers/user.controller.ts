@@ -1,7 +1,9 @@
-const db = require('../db')
+import db from '../db'
+import {Request, Response} from "express";
+
 
 class UserController {
-    async createUser(req, res) {
+    async createUser(req:Request, res:Response) {
         try {
             const {name, surname} = req.body
             const newPerson = await db.query(`INSERT INTO person (name,surname) values ($1, $2) RETURNING *`, [name, surname])
@@ -11,7 +13,7 @@ class UserController {
         }
     }
 
-    async getUser(req, res) {
+    async getUser(req:Request, res:Response) {
         try {
             const users = await db.query(`SELECT * FROM person`)
             res.json(users.rows)
@@ -20,7 +22,7 @@ class UserController {
         }
     }
 
-    async getOneUser(req, res) {
+    async getOneUser(req:Request, res:Response) {
         try {
             const id = req.params.id
             if (!id) {
@@ -33,7 +35,7 @@ class UserController {
         }
     }
 
-    async updateUser(req, res) {
+    async updateUser(req:Request, res:Response) {
         try {
             const {id, name, surname} = req.body
             const user = await db.query(`UPDATE person set name = $1, surname = $2 where id = $3 RETURNING *`, [name, surname, id])
@@ -43,7 +45,7 @@ class UserController {
         }
     }
 
-    async deleteUser(req, res) {
+    async deleteUser(req:Request, res:Response) {
         try {
             const id = req.params.id
             if (!id) {
@@ -56,5 +58,4 @@ class UserController {
         }
     }
 }
-
-module.exports = new UserController()
+export default new UserController()
