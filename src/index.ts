@@ -1,4 +1,4 @@
-import express from 'express'
+import express, {Request, Response} from 'express'
 import {contactRouter} from "./routes/contact.routes";
 import {userRouter} from "./routes/user.routes";
 
@@ -13,6 +13,11 @@ app.use(express.json())
 
 app.use('/api', userRouter)
 app.use('/api', contactRouter)
+
+app.get('/',(req:Request, res:Response)=>{
+    res.send('Hello NEWAGE!')
+})
+
 
 
 

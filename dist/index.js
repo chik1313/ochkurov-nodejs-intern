@@ -11,4 +11,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/api', user_routes_1.userRouter);
 app.use('/api', contact_routes_1.contactRouter);
+app.get('/', (req, res) => {
+    res.send('Hello NEWAGE!');
+});
 app.listen(PORT, () => console.log(`server started on post ${PORT}`));
